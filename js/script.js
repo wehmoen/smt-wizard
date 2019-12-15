@@ -6,15 +6,14 @@ $(document).ready(function () {
     var num_token_emissions = 0;                // The number of Token Emissions
 
     async function asyncGetChainID() {
-      return new Promise(function (resolve, reject) {
-          steem.api.callAsync('condenser_api.get_version', []).then((result) => {
-              resolve(result["chain_id"]);
-          }).catch((err) => { reject("Could not get Chain ID!"); });
-      });
+        return new Promise(function (resolve, reject) {
+            steem.api.callAsync('condenser_api.get_version', []).then((result) => {
+                resolve(result["chain_id"]);
+            }).catch((err) => { reject("Could not get Chain ID!"); });
+        });
     }
 
     asyncGetChainID().then(async chainID => {
-
         // Connect SteemJS to the testnet
         steem.api.setOptions({
             url: 'https://testnet.steemitdev.com',
@@ -588,5 +587,4 @@ $(document).ready(function () {
             });
         }
     })
-
 });
